@@ -1,0 +1,109 @@
+{#
+    minimal/layout.html
+    ~~~~~~~~~~~~~~~~~~~
+
+    Layout for Minimal5 theme.
+
+    :copyright: Copyright 2011-2013 by Vlad Riscutia and contributors (see
+    CONTRIBUTORS file)
+    :license: FreeBSD, see LICENSE file
+#}
+
+{% extends "boilerplate/layout.html" %}
+
+{%- block doctype -%}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+{%- endblock -%}
+
+{%- block header -%}
+<table id="layout" border="0" cellspacing="0" cellpadding="0">
+<colgroup>
+<col class="colone" /><col class="coltwo" />
+<col class="colthree" /></colgroup> 
+<tr>
+  <td id="header" colspan="3">
+    <table id="logoarea" cellpadding="0" cellspacing="0" border="0" width="100%">
+      <tr>
+        <td rowspan="2" valign="middle" class="logoarea-logo">
+          <a href="http://s2f.jp/"><img class="logo" src="{{ pathto('_static/logo.png', 1) }}" alt="Strawberry Field" /></a>
+        </td>
+        <td rowspan="2" valign="middle" class="logoarea-title">
+          <h1 class="blogtitle">
+            <a href="{{ pathto(pages[0][0]) }}">{{ shorttitle|e }}</a>
+          </h1>
+          {%- if tagline -%}<p class="tagline">{{ tagline|e }}</p>{%- endif -%}
+        </td>
+      </tr>
+      
+    </table>
+    <div class="horbar1">&nbsp;</div>
+    <div id="imagecontainer" class="header-image-container" style="background: url('http://s2f.jp/wp-content/themes/atahualpa/images/header/IMG_1496.jpg') top center no-repeat;">
+      <div class="codeoverlay"></div>
+      <div class="opacityleft">&nbsp;</div>
+      <div class="opacityright">&nbsp;</div>
+    </div>
+    <div class="horbar2">&nbsp;</div>
+  </td>
+</tr>
+<tr id="bodyrow">
+{%- endblock -%}
+
+{%- block content -%}
+  <td id="left">
+  </td>
+  <td id="middle">
+    <div class="post-8 post type-post status-publish format-standard hentry category-1 odd" id="post-8">
+      <div class="post-bodycopy clearfix">
+        {%- block body -%}{%- endblock -%}
+      </div>
+    </div><!-- / Post -->
+
+    <div class="clearfix navigation-bottom">
+      <div class="older">
+        <a href="http://s2f.jp/" >&laquo; Newer Entries</a> &nbsp;
+      </div>
+      <div class="newer">
+        &nbsp; <a href="http://s2f.jp/page/3" >Older Entries &raquo;</a>
+      </div>
+    </div>
+  </td>
+
+  <td id="right">
+    {%- if render_sidebar -%}
+    <aside class="sidebar">
+      {%- if rss_in_page_nav -%}
+      <div class="rss-bo">
+        <a class="posts-icon" href="{{ rss_feed_link }}" title="Subscribe to the POSTS feed">Posts </a>
+      </div>
+      {%- endif -%}
+      <section>
+      {%- if sidebars != None -%}
+      {%- for sidebartemplate in sidebars -%}
+      <section>
+        {%- include sidebartemplate -%}
+      </section>
+    {%- endfor -%}
+    {%- endif -%}
+    <div class="archive_link">
+        <a href="{{ pathto('archive') }}">{{ archivechar }}{{ archive_title }}{{ archivechar }}</a>
+    </div>
+    </aside>
+    {%- endif -%}
+{%- endblock -%}
+
+{%- block footer -%}
+</tr><!-- ./ bodyrow -->
+<tr>
+  <td id="footer" colspan="3">
+    Copyright &copy; 2013 <a href="http://s2f.jp/">Strawberry Field</a> - All Rights Reserved<br />
+    Powered by <a href="http://wordpress.org/">WordPress</a> &amp; <a href="http://forum.bytesforall.com/">Atahualpa</a>    
+  </td>
+</tr>
+</table><!-- / layout -->
+{%- endblock -%}
+
+{%- block navigation -%}
+{%- endblock -%}
+
