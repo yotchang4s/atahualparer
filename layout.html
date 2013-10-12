@@ -1,12 +1,8 @@
 {#
-    minimal/layout.html
-    ~~~~~~~~~~~~~~~~~~~
+    atahualparer/layout.html
+    ~~~~~~~~~~~~~~~~~~~~~~~~
 
-    Layout for Minimal5 theme.
-
-    :copyright: Copyright 2011-2013 by Vlad Riscutia and contributors (see
-    CONTRIBUTORS file)
-    :license: FreeBSD, see LICENSE file
+    Layout for Atahualparer theme.
 #}
 
 {% extends "boilerplate/layout.html" %}
@@ -27,7 +23,7 @@
     <table id="logoarea" cellpadding="0" cellspacing="0" border="0" width="100%">
       <tr>
         <td rowspan="2" valign="middle" class="logoarea-logo">
-          <a href="http://s2f.jp/"><img class="logo" src="{{ pathto('_static/logo.png', 1) }}" alt="Strawberry Field" /></a>
+          <a href="{{ pathto(pages[0][0]) }}"><img class="logo" src="{{ pathto('_static/logo.png', 1) }}" alt="{{ shorttitle|e }}" /></a>
         </td>
         <td rowspan="2" valign="middle" class="logoarea-title">
           <h1 class="blogtitle">
@@ -39,7 +35,7 @@
       
     </table>
     <div class="horbar1">&nbsp;</div>
-    <div id="imagecontainer" class="header-image-container" style="background: url('http://s2f.jp/wp-content/themes/atahualpa/images/header/IMG_1496.jpg') top center no-repeat;">
+    <div id="imagecontainer" class="header-image-container" style="background: url({{ pathto('_static/header.png', 1) }}) top center no-repeat;">
       <div class="codeoverlay"></div>
       <div class="opacityleft">&nbsp;</div>
       <div class="opacityright">&nbsp;</div>
@@ -60,14 +56,20 @@
       </div>
     </div><!-- / Post -->
 
+    {%- if next or next -%}
     <div class="clearfix navigation-bottom">
+      {%- if prev -%}
       <div class="older">
-        <a href="http://s2f.jp/" >&laquo; Newer Entries</a> &nbsp;
+        &nbsp; <a href="{{ prev.link|e }}" >{{ prevchar }} Newer Entries </a>
       </div>
+      {%- endif -%}
+      {%- if next -%}
       <div class="newer">
-        &nbsp; <a href="http://s2f.jp/page/3" >Older Entries &raquo;</a>
+        <a href="{{ next.link|e }}" >Older Entries {{ nextchar }}</a>
       </div>
+      {%- endif -%}
     </div>
+    {%- endif -%}
   </td>
 
   <td id="right">
@@ -97,8 +99,7 @@
 </tr><!-- ./ bodyrow -->
 <tr>
   <td id="footer" colspan="3">
-    Copyright &copy; 2013 <a href="http://s2f.jp/">Strawberry Field</a> - All Rights Reserved<br />
-    Powered by <a href="http://wordpress.org/">WordPress</a> &amp; <a href="http://forum.bytesforall.com/">Atahualpa</a>    
+    Copyright &copy; 2013 yotchang4s - All Rights Reserved
   </td>
 </tr>
 </table><!-- / layout -->
